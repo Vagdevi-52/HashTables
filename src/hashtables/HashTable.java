@@ -1,30 +1,37 @@
 package hashtables;
 
-public class HashTable
-{
-    public static void main(String[] args) 
-    {
-	        HashTableImpl<String, Integer> hashImpl = new HashTableImpl();
-	        String message = "“Paranoids are not\r\n"
-	        		+ "paranoid because they are paranoid but\r\n"
-	        		+ "because they keep putting themselves\r\n"
-	        		+ "deliberately into paranoid avoidable\r\n"
-	        		+ "situations”";
 
-	        //String to String conversion.
+import java.util.Hashtable;
+
+public class HashTable {
+
+	public static void main(String[] args) 
+	{
+	        HashTableImpl<String, Integer> hashImpl = new HashTableImpl();
+	        String message = "Paranoids are not paranoid because they are paranoid but " +
+	                "because they keep putting themselves deliberately into paranoid avoidable situations";
+
+	        //String to String[] conversion.
+	   
 	        String[] messageArray = message.toLowerCase().split(" ");
 
-	        //Iterate within the Array
-	        for(String word: messageArray) 
-	        {
+	        //Iterate within the array
+	        for(String word: messageArray) {
 	            Integer value =  hashImpl.get(word);
+	          
 	            if( value == null)
 	                value = 1;
 	            else
 	                value = value + 1;
-	            hashImpl.add(word , value);
+	              hashImpl.add(word , value);
 	        }
-	        //Display  linked list
+	        //Display the hashTable
+	        System.out.println(hashImpl);
+
+	        //Remove "avoidable" from the hashTable
+	        hashImpl.remove("avoidable");
+
+	        //Display the hashTable
 	        System.out.println(hashImpl);
 	    }
-}
+	}
